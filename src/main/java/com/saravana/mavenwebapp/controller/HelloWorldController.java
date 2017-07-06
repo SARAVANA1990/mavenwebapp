@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -41,6 +42,15 @@ public class HelloWorldController {
 	private String Hello(Model model,
 			HttpServletRequest request, HttpServletResponse response,
 			HttpSession session) throws IOException {
+		
+		
+		Cookie[] cookies = request.getCookies();
+		
+		if(cookies !=null && cookies.length>0){
+		for (Cookie cookie : cookies) {
+			System.out.println("request.,,,,"+cookie.getValue());
+		}
+		}
 
 	model.addAttribute("msg", "hello world");
 

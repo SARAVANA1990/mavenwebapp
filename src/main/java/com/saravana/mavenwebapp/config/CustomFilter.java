@@ -9,6 +9,8 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 
 
@@ -32,11 +34,20 @@ public class CustomFilter implements Filter{
 		    FilterChain chain) throws IOException, ServletException {  
 		          
 		    PrintWriter out=resp.getWriter();  
-		    out.print("filter is invoked before");  
-		    System.out.println("filter is invoked before");
+		     
+		    Cookie cookie = new Cookie("LoginCookie","token");
+		    out.print("filter is invoked before--->"+cookie);
+		    cookie.setMaxAge(-1);
+
+		    HttpServletResponse response = (HttpServletResponse) resp;
+		    response.addCookie(cookie);
+		    System.out.println("filter is invoked before"+cookie);
 		  
+		    
+		    
 		        //  chain.getServletFilters();
 		    chain.doFilter(req, resp);//sends request to next resource  
+		    cookie.setMaxAge(0);
 		          
 		    out.print("filter is invoked after");  
 		    System.out.println("filter is invoked after");
