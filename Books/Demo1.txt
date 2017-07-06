@@ -1,0 +1,116 @@
+import java.util.*;
+class Demo1
+{
+	public static void main(String args[])
+	{ 
+		menu();
+	}
+	private static void menu(){
+	subMenu();
+	Scanner a=new Scanner(System.in);
+	System.out.println("Enter the number.....:");
+	int optn=Integer.parseInt(a.next());	
+	do{
+		switch(optn){
+		case 0:
+			
+		break;
+		case 1:
+			checkPalindromeUsingFor("MADAM");
+			menu(); 
+		break;
+		case 2:
+			checkPalindromeUsingWhile("MADAM");
+			menu();
+		break;
+		case 3:
+			getRevNumber(65456);
+			menu();
+		break;
+		case 4:
+			getRevNumberUsingreg(123);
+			menu();
+		break;
+		case 5:
+			revString("saravana");
+			menu();
+		break;
+		default:
+		   menu(); 
+		}  
+	}while(false);
+	}
+	
+	private static void subMenu(){
+		System.out.println(" ");
+		System.out.println("0.Exit");
+		System.out.println("1.Palindrome Using For LooP");
+		System.out.println("2.Palindrome Using For While");
+		System.out.println("3.Reverce Number");
+		System.out.println("4.Reverce Number Using Recorsion");
+		System.out.println("5.Reverce String Using Recorsion");
+	}
+     private static void checkPalindromeUsingFor(String a){
+		 //String a="MADAM";
+		 int len=a.length()-1;
+		 System.out.println("len......."+len);		 
+		 for(int i=0;i<=a.length()-1;i++){
+				if(a.charAt(i)== a.charAt(len))
+				System.out.print(a.charAt(i));
+			     len--;
+		 }
+	 }
+	 
+	 private static void checkPalindromeUsingWhile(String a){
+		 //String a="MADAM";
+		 int len=a.length()-1;
+		 int i=0;
+		 System.out.println("len......."+len);		 
+		 
+		 while(i<=a.length()-1){
+			 if(a.charAt(i)== a.charAt(len)){
+				System.out.print(a.charAt(i));
+			     len--;
+				 i++;
+		 }else{
+			 System.out.print("NOT PALINDROM");
+			 break;
+		     }
+		 }
+	 }
+	 
+	 private static void getRevNumber(int n){
+		 
+		 int revNumber=0;
+		 while(n>0)
+		 {
+			 revNumber=revNumber * 10;
+			 revNumber=revNumber + n%10;
+			 n=n/10;
+			 
+		 }
+	  System.out.print("revNumber....."+revNumber);
+		 
+	 }
+	
+	private static void getRevNumberUsingreg(int a){
+		if(a<10){
+			System.out.print(a);
+		}else{
+			System.out.print(a%10);
+			getRevNumberUsingreg(a/10);
+		}
+	}
+	private static void revString(String a){
+		int len=a.length()-1;
+		if(len==0){
+			System.out.print(a.charAt(len));
+		}else{
+			 System.out.print(a.charAt(len));
+		     revString(a.substring(0, len));
+		}
+	}
+		
+}
+	
+	
