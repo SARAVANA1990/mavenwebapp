@@ -18,9 +18,9 @@
     <h1>${model.msg}</h1>
      <h1>${msg}</h1>
     
-     <c:out value='${model.msg}'/>
-     <c:out value='${msg}'/>
-    <c:out value="${msg}" />
+      <c:out value='${model.msg}'/>
+      <c:out value='${msg}'/>
+      <c:out value="${msg}" />
     
      The first user is <%=request.getAttribute("msg") %>
      </springForm:form>
