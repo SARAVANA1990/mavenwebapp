@@ -1,8 +1,6 @@
 package com.saravana.mavenwebapp.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+
  
 @Controller
 public class HelloWorldController {
@@ -36,26 +34,8 @@ public class HelloWorldController {
 	model.addObject("msg", "hello world");
 
 	return model;
-	}*/
-	
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
-	private String Hello(Model model,
-			HttpServletRequest request, HttpServletResponse response,
-			HttpSession session) throws IOException {
-		
-		
-		Cookie[] cookies = request.getCookies();
-		
-		if(cookies !=null && cookies.length>0){
-		for (Cookie cookie : cookies) {
-			System.out.println("request.,,,,"+cookie.getValue());
-		}
-		}
-
-	model.addAttribute("msg", "hello world");
-
-	return "helloworld";
 	}
+	
 	
 	
 	
@@ -66,18 +46,42 @@ public class HelloWorldController {
 		
 		return "helloworld";
 	}
-	*/
- 
-}
-class Test{
-	private String myMsg;
+	
+	
+/*	@RequestMapping(value = "/hello.htm", method = RequestMethod.GET)
+	private String Hello(Model model,
+			HttpServletRequest request, HttpServletResponse response,
+			HttpSession session) throws IOException {
+	System.out.println("enter in error 7 controller------");
 
-	public String getMyMsg() {
-		return myMsg;
-	}
+	model.addAttribute("msg", "hello world");
 
-	public void setMyMsg(String myMsg) {
-		this.myMsg = myMsg;
+	return "helloworld";
+	}*/
+	
+	
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	private String Hello(Model model,
+			HttpServletRequest request,
+			HttpServletResponse response,
+			HttpSession session) throws IOException {
+		
+		
+		Cookie[] cookies = request.getCookies();
+		
+		if(cookies !=null && cookies.length>0){
+		for (Cookie cookie : cookies) {
+			System.out.println("request.,,,,"+cookie.getValue());
+		}
+		}
+		User user=new User();
+		user.setMyMsg("hello world");
+		//model.addAttribute("msg", "hello world");
+	     model.addAttribute("user", new User());
+
+	return "helloworld";
 	}
 	
+	
+ 
 }

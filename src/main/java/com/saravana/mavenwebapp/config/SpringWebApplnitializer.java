@@ -1,11 +1,8 @@
 package com.saravana.mavenwebapp.config;
 
 
-import java.util.EnumSet;
 
-import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
-import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
